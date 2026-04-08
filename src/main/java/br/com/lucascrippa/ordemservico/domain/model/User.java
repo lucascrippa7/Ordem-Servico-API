@@ -2,6 +2,8 @@ package br.com.lucascrippa.ordemservico.domain.model;
 
 import br.com.lucascrippa.ordemservico.domain.enums.UserRole;
 
+
+
 public class User {
 
     private Long id;
@@ -13,18 +15,27 @@ public class User {
 
     private static final String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,}$";
 
+
+    private String validateName(String name){
+        if(name == null||name.trim().isEmpty()){
+            throw new IllegalArgumentException("The name can't be empty.");
+        } return name.trim();
+    }
+
+    private String validateEmail(String email){
+        if(email == null||email.trim().isEmpty()|| !email.contains("@")){
+            throw new IllegalArgumentException("Invalid or null email address.");
+        }
+        return email.trim();
+    }
+
     public User(Long id, String name, String email, String password, UserRole role, boolean active) {
         this.id = id;
 
-       if(name == null||name.trim().isEmpty()){
-           throw new IllegalArgumentException("The name can't be empty.");
-       }
-        this.name = name.trim();
+        this.name = validateName(name);
 
-       if(email == null||email.trim().isEmpty()|| !email.contains("@")){
-           throw new IllegalArgumentException("Invalid or null email address.");
-       }
-        this.email = email.trim();
+
+        this.email = validateEmail(email);
 
 
        if(password == null|| password.trim().isEmpty()||!password.matches(PASSWORD_REGEX)){
@@ -53,9 +64,6 @@ public class User {
         return email;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     public UserRole getRole() {
         return role;
@@ -71,17 +79,12 @@ public class User {
 
 
     public void changeName(String newName){
-        if(newName == null||newName.trim().isEmpty()){
-            throw new IllegalArgumentException("The name can't be empty.");
-        }
-        this.name = newName.trim();
+        this.name = validateName(newName);
     }
 
     public void changeEmail(String newEmail){
-        if(newEmail == null||newEmail.trim().isEmpty()|| !newEmail.contains("@")){
-            throw new IllegalArgumentException("Invalid or null email address.");
-        }
-        this.email = newEmail.trim();
+
+        this.email = validateEmail(newEmail);
     }
 
     public void changePassword(String newPassword){
