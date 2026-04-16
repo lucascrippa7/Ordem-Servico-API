@@ -7,40 +7,36 @@ import java.time.LocalDateTime;
 public class ServiceOrderImage {
 
     private Long id;
-    private Long orderId;
-    private String imageURL;
+    private String imageUrl;
     private ImageType type;
     private LocalDateTime uploadedAt;
     private Long uploadedByUserId;
 
+    public ServiceOrderImage(String imageUrl, ImageType type, Long uploadedByUserId) {
+        if (imageUrl == null || imageUrl.isBlank()) {
+            throw new IllegalArgumentException("Image URL is required");
+        }
 
-    public void validateType(){
-        if(type == null){
-            throw new IllegalStateException("Type can't be empty");
-        } this.type = type;
-    }
+        if (type == null) {
+            throw new IllegalArgumentException("Image type is required");
+        }
 
-    public ServiceOrderImage(Long id, Long orderId, String imageURL,
-                             ImageType type, LocalDateTime uploadedAt, Long uploadedByUserId) {
-        this.id = id;
-        this.orderId = orderId;
-        this.imageURL = imageURL;
+        if (uploadedByUserId == null || uploadedByUserId <= 0) {
+            throw new IllegalArgumentException("Invalid user ID");
+        }
+
+        this.imageUrl = imageUrl;
         this.type = type;
-        this.uploadedAt = uploadedAt;
         this.uploadedByUserId = uploadedByUserId;
+        this.uploadedAt = LocalDateTime.now();
     }
-
 
     public Long getId() {
         return id;
     }
 
-    public Long getOrderId() {
-        return orderId;
-    }
-
-    public String getImageURL() {
-        return imageURL;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public ImageType getType() {
@@ -55,7 +51,7 @@ public class ServiceOrderImage {
         return uploadedByUserId;
     }
 
-    public void setId(Long id) {
+    protected void setId(Long id) {
         this.id = id;
     }
 }
