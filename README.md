@@ -1,64 +1,246 @@
-# 📌 Ordem de Serviço API
+# 🚧 Ordem de Serviço API
 
-API REST para gerenciamento de Ordens de Serviço, desenvolvida com Spring Boot e estruturada seguindo princípios de Clean Architecture.
+API REST desenvolvida em Java com Spring Boot para gerenciamento de ordens de serviço.
+
+O projeto está sendo construído com foco em boas práticas de arquitetura backend, utilizando Clean Architecture, separação de responsabilidades e princípios de desenvolvimento escalável.
+
+Além das funcionalidades de negócio, o sistema também serve como laboratório de estudos para tecnologias modernas do ecossistema Java e arquitetura de software.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+# 🚀 Tecnologias utilizadas
 
-- Java 21
+## Backend
+
+- Java
 - Spring Boot
-- Spring Web
-- Spring Data JPA
-- Spring Security
-- PostgreSQL
 - Maven
 
----
+## Arquitetura e boas práticas
 
-## 🏗 Arquitetura
+- Clean Architecture
+- SOLID
+- Domain Driven Design (DDD)
+- DTO Pattern
+- Exceptions Handling
+- Testes unitários
 
-O projeto foi estruturado utilizando princípios de Clean Architecture, separando responsabilidades em camadas bem definidas:
+## Banco de dados
 
-- **Domain** → Entidades e regras de negócio
-- **Application** → Casos de uso
-- **Infrastructure** → Persistência e integrações externas
-- **Presentation** → Controllers e exposição da API
+- Spring Data JPA *(em implementação)*
+- Hibernate *(em implementação)*
 
-Essa abordagem garante:
-- Baixo acoplamento
-- Alta coesão
-- Facilidade de testes
-- Evolução sustentável do sistema
+## Segurança
 
----
+- Spring Security *(em implementação)*
+- JWT Authentication *(planejado)*
 
-## 🔐 Segurança
+## Mensageria
 
-A API utiliza autenticação baseada em JWT (JSON Web Token), garantindo controle de acesso aos endpoints protegidos.
+- Apache Kafka *(planejado)*
 
----
+## Infraestrutura
 
-## 📦 Funcionalidades
+- Docker *(planejado)*
+- Docker Compose *(planejado)*
 
-- Cadastro de Ordem de Serviço
-- Listagem de Ordens
-- Busca por filtros
-- Atualização de status
-- Exclusão de Ordem
-- Autenticação de usuários
+## Ferramentas
 
----
-
-## 🗄 Banco de Dados
-
-O projeto utiliza PostgreSQL como banco de dados relacional.
+- Git
+- GitHub
+- Postman
+- IntelliJ IDEA
 
 ---
 
-## ▶️ Como Executar
+# 🎯 Objetivos do projeto
 
-### 1️⃣ Clonar o repositório
+Este projeto foi criado com o objetivo de aprofundar conhecimentos em:
+
+- arquitetura backend moderna;
+- APIs REST;
+- modelagem de domínio;
+- segurança de aplicações;
+- persistência de dados;
+- mensageria;
+- testes automatizados;
+- conteinerização;
+- boas práticas de desenvolvimento.
+
+---
+
+# 🧠 Conceitos aplicados
+
+Durante o desenvolvimento estão sendo aplicados conceitos importantes de engenharia de software:
+
+- Clean Architecture
+- Separação de camadas
+- Inversão de dependência
+- Encapsulamento
+- Casos de uso
+- Regras de negócio desacopladas
+- Injeção de dependência
+- Tratamento global de exceções
+- Validações de domínio
+- Testes unitários
+
+---
+
+# 📂 Estrutura do projeto
 
 ```bash
-git clone https://github.com/seu-usuario/ordem-servico-api.git
+src
+ ├── main
+ │    ├── java
+ │    │     └── br/com/lucascrippa/ordemservico
+ │    │            ├── application
+ │    │            ├── domain
+ │    │            ├── infrastructure
+ │    │            └── presentation
+ │    └── resources
+ └── test
+```
+
+---
+
+# 🏛️ Organização das camadas
+
+## 📁 Domain
+
+Contém as regras de negócio e entidades da aplicação.
+
+Exemplos:
+- entidades;
+- enums;
+- validações de domínio;
+- contratos/interfaces.
+
+---
+
+## 📁 Application
+
+Responsável pelos casos de uso da aplicação.
+
+Exemplos:
+- serviços;
+- DTOs;
+- regras de aplicação;
+- orquestração de fluxos.
+
+---
+
+## 📁 Infrastructure
+
+Camada responsável pela comunicação externa.
+
+Exemplos:
+- persistência;
+- segurança;
+- mensageria;
+- configurações;
+- integrações.
+
+---
+
+## 📁 Presentation
+
+Responsável pela exposição da API REST.
+
+Exemplos:
+- controllers;
+- requests;
+- responses;
+- handlers de exceção.
+
+---
+
+# 📋 Funcionalidades atuais
+
+- Cadastro de usuários
+- Controle de permissões
+- Ativação e desativação de usuários
+- Estrutura de ordens de serviço
+- Validações de domínio
+- Tratamento de exceções
+- Testes unitários
+
+---
+
+# 🔒 Funcionalidades planejadas
+
+- Autenticação com JWT
+- Spring Security
+- Persistência com JPA
+- Integração com Kafka
+- Conteinerização com Docker
+- Docker Compose
+- Logs estruturados
+- Observabilidade
+- Testes de integração
+- Documentação com Swagger/OpenAPI
+
+---
+
+# ▶️ Como executar o projeto
+
+## Pré-requisitos
+
+- Java 17+
+- Maven
+- IDE Java (IntelliJ recomendado)
+
+---
+
+## Clone o repositório
+
+```bash
+git clone https://github.com/lucascrippa7/Ordem-Servico-API.git
+```
+
+---
+
+## Acesse a pasta do projeto
+
+```bash
+cd Ordem-Servico-API
+```
+
+---
+
+## Execute a aplicação
+
+```bash
+mvn spring-boot:run
+```
+
+Ou execute a classe principal pela IDE.
+
+---
+
+# 🧪 Testes
+
+Para executar os testes:
+
+```bash
+mvn test
+```
+
+---
+
+# 📚 Objetivo do projeto
+
+Este projeto representa a evolução prática no desenvolvimento backend Java, consolidando conhecimentos utilizados em aplicações modernas de mercado.
+
+O foco principal está em construir uma aplicação escalável, organizada e alinhada com boas práticas de arquitetura de software.
+
+---
+
+# 👨‍💻 Autor
+
+Desenvolvido por Lucas Crippa.
+
+GitHub:
+
+https://github.com/lucascrippa7
+
+---
