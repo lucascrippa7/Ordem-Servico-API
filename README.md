@@ -2,9 +2,11 @@
 
 API REST desenvolvida em Java com Spring Boot para gerenciamento de ordens de serviço.
 
-O projeto está sendo construído com foco em boas práticas de arquitetura backend, utilizando Clean Architecture, separação de responsabilidades e princípios de desenvolvimento escalável.
+Criei este projeto com foco em aprofundar meus conhecimentos em arquitetura backend, Clean Architecture e tecnologias modernas do ecossistema Java.
 
-Além das funcionalidades de negócio, o sistema também serve como laboratório de estudos para tecnologias modernas do ecossistema Java e arquitetura de software.
+A ideia do sistema surgiu a partir de uma necessidade real apresentada pelo meu cunhado, que precisava de um sistema web para gerenciamento de ordens de serviço. Aproveitei esse cenário como oportunidade para desenvolver uma aplicação mais próxima de um contexto real de mercado.
+
+Além das funcionalidades de negócio, o projeto também está sendo utilizado como laboratório de estudos para segurança, persistência de dados, mensageria, testes e conteinerização.
 
 ---
 
@@ -55,7 +57,7 @@ Além das funcionalidades de negócio, o sistema também serve como laboratório
 
 # 🎯 Objetivos do projeto
 
-Este projeto foi criado com o objetivo de aprofundar conhecimentos em:
+Com este projeto estou aprofundando conhecimentos em:
 
 - arquitetura backend moderna;
 - APIs REST;
@@ -67,11 +69,13 @@ Este projeto foi criado com o objetivo de aprofundar conhecimentos em:
 - conteinerização;
 - boas práticas de desenvolvimento.
 
+O objetivo também é evoluir o sistema para uma aplicação web funcional de gerenciamento de ordens de serviço.
+
 ---
 
 # 🧠 Conceitos aplicados
 
-Durante o desenvolvimento estão sendo aplicados conceitos importantes de engenharia de software:
+Durante o desenvolvimento estou aplicando conceitos importantes de engenharia de software:
 
 - Clean Architecture
 - Separação de camadas
@@ -227,11 +231,11 @@ mvn test
 
 ---
 
-# 📚 Objetivo do projeto
+# 📚 Sobre o projeto
 
-Este projeto representa a evolução prática no desenvolvimento backend Java, consolidando conhecimentos utilizados em aplicações modernas de mercado.
+Este projeto representa minha evolução prática no desenvolvimento backend Java, consolidando conhecimentos utilizados em aplicações modernas de mercado.
 
-O foco principal está em construir uma aplicação escalável, organizada e alinhada com boas práticas de arquitetura de software.
+O foco principal é construir uma aplicação escalável, organizada e alinhada com boas práticas de arquitetura de software.
 
 ---
 
