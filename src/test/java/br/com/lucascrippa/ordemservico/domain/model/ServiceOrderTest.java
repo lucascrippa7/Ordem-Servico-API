@@ -110,4 +110,85 @@ class ServiceOrderTest {
         assertThrows(IllegalArgumentException.class, ()-> serviceOrder.completeService(""));
     }
 
+    // ================= CANCELLATION TESTS =================
+
+
+    @Test
+    void shouldRequestCancellationSuccessfully(){
+        ServiceOrder serviceOrder = createValidServiceOrder();
+        serviceOrder.assignTechnician(1L);
+        serviceOrder.startService();
+        serviceOrder.requestCancellation("Customer requested cancellation", 1L);
+        assertEquals(OrderStatus.AWAITING_CANCELLATION, serviceOrder.getStatus());
+        assertEquals("Customer requested cancellation", serviceOrder.getReasonCancellation());
+        assertEquals(1L, serviceOrder.getUserRequestedCancellationId());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenCancellingCompletedOrder(){
+        ServiceOrder serviceOrder = createValidServiceOrder();
+        serviceOrder.assignTechnician(1L);
+        serviceOrder.startService();
+        serviceOrder.completeService("Update");
+        assertThrows(IllegalStateException.class, ()-> serviceOrder.requestCancellation("Nothing", 1L));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenCancellingCancelledOrder(){
+        ServiceOrder serviceOrder = createValidServiceOrder();
+        serviceOrder.assignTechnician(1L);
+        serviceOrder.startService();
+        serviceOrder.requestCancellation("Nothing", 1L);
+        serviceOrder.approveCancellation(1L);
+        assertThrows(IllegalStateException.class, ()-> serviceOrder.requestCancellation("Nothing", 1L));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenCancellationReasonIsNull(){
+        ServiceOrder serviceOrder = createValidServiceOrder();
+        serviceOrder.assignTechnician(1L);
+        serviceOrder.startService();
+        assertThrows(IllegalArgumentException.class, ()-> serviceOrder.requestCancellation(null, 1L));
+
+    }
+
+    @Test
+    void shouldThrowExceptionWhenCancellationReasonIsEmpty(){
+        ServiceOrder serviceOrder = createValidServiceOrder();
+        serviceOrder.assignTechnician(1L);
+        serviceOrder.startService();
+        assertThrows(IllegalArgumentException.class, ()-> serviceOrder.requestCancellation("", 1L));
+
+    }
+
+    // ================= APPROVE CANCELLATION TESTS =================
+
+    @Test
+    void shouldApproveCancellationSuccessfully(){
+        ServiceOrder serviceOrder = createValidServiceOrder();
+        serviceOrder.assignTechnician(1L);
+        serviceOrder.startService();
+        serviceOrder.requestCancellation("Nothing", 1L);
+        serviceOrder.approveCancellation(1L);
+        assertEquals(OrderStatus.CANCELLED,serviceOrder.getStatus() );
+        assertEquals(1L, serviceOrder.getUserApprovedCancellationId());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenApprovingCancellationWithoutRequest(){
+        ServiceOrder serviceOrder = createValidServiceOrder();
+        serviceOrder.assignTechnician(1L);
+        serviceOrder.startService();
+        assertThrows(IllegalStateException.class, ()-> serviceOrder.approveCancellation(1L));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenApprovedCancellationUserIdIsNull(){
+        ServiceOrder serviceOrder = createValidServiceOrder();
+        serviceOrder.assignTechnician(1L);
+        serviceOrder.startService();
+        serviceOrder.requestCancellation("Nothing", 1L);
+        assertThrows(IllegalArgumentException.class, ()-> serviceOrder.approveCancellation(null));
+    }
+
 }
